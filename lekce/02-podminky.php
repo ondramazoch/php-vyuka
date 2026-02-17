@@ -73,3 +73,13 @@ echo "Uživatel: {$jmeno}\n";
 echo "\n--- Tvůj úkol ---\n";
 // TODO: Napiš podmínku (použij match), která podle skóre (0-100) vypíše známku
 //       90-100 = 1, 75-89 = 2, 50-74 = 3, 25-49 = 4, 0-24 = 5
+$skore = 95;
+
+echo match (true) {
+    $skore >= 90 && $skore <= 100 => 1,
+    $skore >= 75 && $skore <= 89  => 2,
+    $skore >= 50 && $skore <= 74  => 3,
+    $skore >= 25 && $skore <= 49  => 4,
+    $skore >= 0  && $skore <= 24  => 5,
+    default => "Neplatné skóre"
+};
