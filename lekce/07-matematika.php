@@ -16,9 +16,10 @@ Instrukce:
 · Vynechte dva řádky, provede se výpočet obvodu a obsahu (použijte Heronův vzorec 𝑆=√𝑠(𝑠−𝑎)(𝑠−𝑏)(𝑠−𝑐), kde 𝑠=𝑎+𝑏+𝑐2) podle zadání (odmocnina je sqrt($cislo)) a vypíše se: obvod (obsah) je hodnota
 */
 
-$a= 10;
-$b= 15;
-$c= 20;
+$a= 3;
+$b= 5;
+$c= 4;
+$p=0;
 echo "a = {$a} cm\n";
 echo "b = {$b} cm\n";
 echo "c = {$c} cm\n";
@@ -70,7 +71,31 @@ DALŠÍ ÚKOLY
    Funkce vrátí text s typem trojúhelníku.
 
 ----------------------------------------------------
+*/
+ 
 
+    if ($a >= $b && $a >= $c) {
+        $p = $a;
+        $c = $a;
+        $a = $b;
+        $b = $p;
+    } elseif ($b >= $a && $b >= $c) {
+        $p = $b;
+        $c = $b;
+        $b = $a;
+        $a = $c;
+    }
+
+    if($c ** 2 === $a ** 2 + $b ** 2) {
+        echo "Trojúhelník je pravoúhlý.\n";
+    } elseif ($c ** 2 < $a ** 2 + $b ** 2) {
+        echo "Trojúhelník je ostroúhlý.\n";
+    } else {
+        echo "Trojúhelník je tupoúhlý.\n";
+    }
+
+
+/*
 6) Vytvořte funkci getHeightToA($a, $content),
    která vypočítá výšku na stranu a.
 
@@ -81,7 +106,12 @@ Použijte vzorec:
    Funkce vrátí výšku.
 
 ----------------------------------------------------
+*/
 
+$v_a = (2 * $obsah) / $a;
+
+echo "Výška na stranu a je {$v_a} cm\n";
+/*
 7) Vytvořte funkci getAngles($a, $b, $c),
    která vypočítá velikosti úhlů α, β, γ.
 
@@ -104,7 +134,11 @@ Funkce vrátí pole:
    ]
 
    ----------------------------------------------------
+*/
 
+
+
+/*
 8) Vytvořte funkci getMinMaxSide($a, $b, $c),
    která vrátí nejdelší a nejkratší stranu.
 
@@ -122,13 +156,31 @@ FUNKCE – DOPLŇTE ŘEŠENÍ
 
 function getTriangleAngleType(float $a, float $b, float $c): string
 {
-	// TODO: doplňte řešení
+	    if ($a >= $b && $a >= $c) {
+        $c = $a;
+        $a = $b;
+        $b = $c;
+    } elseif ($b >= $a && $b >= $c) {
+        $c = $b;
+        $b = $a;
+        $a = $c;
+    }
+
+    if($c ** 2 === $a ** 2 + $b ** 2) {
+        echo "Trojúhelník je pravoúhlý.\n";
+    } elseif ($c ** 2 < $a ** 2 + $b ** 2) {
+        echo "Trojúhelník je ostroúhlý.\n";
+    } else {
+        echo "Trojúhelník je tupoúhlý.\n";
+    }
 }
 
 
 function getHeightToA(float $a, float $content): float
 {
-	// TODO: doplňte řešení
+	$v_a = (2 * $obsah) / $a;
+
+    echo "Výška na stranu a je {$v_a} cm\n";
 }
 
 
