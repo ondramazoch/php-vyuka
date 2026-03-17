@@ -42,3 +42,71 @@ echo "Prvky od posledního k prvnímu:\n";
 for ($i = count($pole) - 1; $i >= 0; $i--) {
     echo $pole[$i] . "\n";
 }
+
+$počet_jedniček = 0;
+foreach ($pole as $prvek) {
+    if ($prvek === 1) {
+        $počet_jedniček++;
+    } 
+}
+
+echo "Hodnota 1 se vyskytuje $počet_jedniček krát.\n";
+
+
+$maximum = max($pole);
+echo "Maximum v poli je: $maximum\n";
+foreach ($pole as $index => $prvek) {
+    if ($index % 2 === 0) {
+        $pole[$index] += 10;
+    }
+}
+echo "Pole po zvětšení sudých prvků o 10:\n";
+foreach ($pole as $prvek) {
+    echo $prvek . "\n";
+}
+echo "\n\n";
+$druhe_pole = [];
+while (true) {
+    echo "Zadej číslo pro druhé pole (nebo -1 pro ukončení): ";
+    $input = (int) readline();
+    if ($input === -1) {
+        break;
+    }
+    $druhe_pole[] = $input;
+}
+$pocet_prvku_prvniho = count($pole);
+$pocet_prvku_druheho = count($druhe_pole);
+if ($pocet_prvku_prvniho > $pocet_prvku_druheho) {
+    echo "První pole má o " . ($pocet_prvku_prvniho - $pocet_prvku_druheho) . " prvků více než druhé pole.\n";
+} elseif ($pocet_prvku_prvniho < $pocet_prvku_druheho) {
+    echo "Druhé pole má o " . ($pocet_prvku_druheho - $pocet_prvku_prvniho) . " prvků více než první pole.\n";
+} else {
+    echo "Obě pole mají stejný počet prvků.\n";
+}
+
+echo "Střídavě prvky obou polí:\n";
+$max_index = max(count($pole), count($druhe_pole));
+for ($i = 0; $i < $max_index; $i++) {
+    if ($i < count($pole)) {
+        echo $pole[$i] . " ";
+    }
+    if ($i < count($druhe_pole)) {
+        echo $druhe_pole[$i] . " ";
+    }
+}
+
+echo "\n\n";
+echo "Sudá čísla z prvního pole:\n";
+foreach ($pole as $prvek) {
+    if ($prvek % 2 === 0) {
+        echo $prvek . " ";
+    }
+}
+
+echo "\nLichá čísla z druhého pole:\n";
+foreach ($druhe_pole as $prvek) {
+    if ($prvek % 2 !== 0) {
+        echo $prvek . " ";
+    }
+echo "\n";
+}
